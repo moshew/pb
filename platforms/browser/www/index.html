@@ -2,21 +2,18 @@
 <html lang="en" id="main">
 <head>
     <meta charset="UTF-8">
-    <title>Automatic Coffee Pod Dsipenser</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo Booth</title>
+	
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body  ng-app="myApp" ng-controller="myCtrl" ng-init="init()" ng-keypress="keypress($event)" background="{{bg_image}}">
+<body  ng-app="myApp" ng-controller="myCtrl" ng-init="init()" ng-keypress="keypress($event)">
     <!--<div class="btn" ng-click="req()"><span ng-show="req1">Hello</span></div>-->
-    <div id="pods" ng-show="bg_image=='pod.jpg'" dir="rtl">
-        <div id="cancel_btn" ng-click="cancel()"><img src="cancel.png" width="40px" onmousedown="return false" /></div>
-        <div id="credit">{{credit}} ₪</div>
-        <div class="pod_btn" ng-repeat="pod in config.pods"><pod item="pod" ng-mousedown="req(pod.id)"></pod></div>
-    </div>
-    <div id="insert_mode" ng-show="bg_image==''">
-        {{id}}
-    </div>
-
+	<div ng-click="click()">
+		<img id="video_bg" src="http://192.168.31.117:8080/video">
+		<div class="photo_bg" ng-show="!start_pb"></div>
+	</div>
 </body>
 </html>

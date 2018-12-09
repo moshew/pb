@@ -1,23 +1,42 @@
-#main {
+body {
     position: absolute;
-    width: 800px;
-    height: 480px;
+    width: 393px;
+	height: 735px;
     user-drag: none;
     user-select: none;
-    cursor:none;
+	overflow:hidden;
+    /*cursor:none;*/
+	margin: 0;
+	
 }
 
-#insert_mode {
-    position: fixed; /* or absolute */
-    top: 50%;
-    left: 50%;
-    margin-left:-130px;
-    font-size: 60px;
+
+div:focus, div:active, span:focus, span:active, img:focus, img:active {
+    outline: none;
+    -webkit-tap-highlight-color:  rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
 }
 
-#pods {
-    width: 780px;
+#video_bg {
+	
+	width: 393px;
+	height: 735px;
 }
+
+.photo_bg {
+    position:fixed;
+    top:0;
+    bottom: 0;
+    width:100%;
+	height: 100%;
+    background:black;
+    opacity:0.8;
+    z-index:20;
+}
+
 
 #cancel_btn {
     position: absolute;

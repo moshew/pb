@@ -26,7 +26,11 @@ app.controller('myCtrl', function($scope, $http, $timeout) {
             .then(function (result) {
                 $scope.config = result.data;
             });
+		$scope.x1 = window.innerWidth;
+		$scope.y1 = window.innerHeight;
     };
+	
+	
 
     $scope.keypress = function (e) {
         temp_id += String.fromCharCode(e.which);
@@ -61,6 +65,10 @@ app.controller('myCtrl', function($scope, $http, $timeout) {
         }
     };
 
+	$scope.click = function () {
+		$scope.start_pb = !$scope.start_pb;
+	};
+	
     $scope.cancel = function () {
         $timeout.cancel(pagePromise);
         req_mode = false;
@@ -82,26 +90,6 @@ app.controller('myCtrl', function($scope, $http, $timeout) {
                             });
                     } else req_mode = false;
                 });
-        }
-    };
-});
-
-app.directive('pod', function() {
-    return {
-        restrict: 'E',
-        transclude: true,
-        scope: {
-            item: "=",
-            req: "&"
-        },
-        templateUrl: 'pod.html',
-        link: function($scope, element, attrs) {
-            $scope.rank = function(nums) {
-                var input = [];
-                for (var i = 1; i <= nums; i += 1) input.push('');
-                for (var i = nums; i < 12; i += 1) input.push('unrank');
-                return input;
-            };
         }
     };
 });
