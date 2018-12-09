@@ -1,27 +1,26 @@
+@font-face {
+    font-family: 'DK';
+    src: url('fonts/DKZealand.otf');
+}
+@font-face {
+    font-family: 'pix';
+    src: url('fonts/PictureThis.ttf');
+}
+
 body {
     position: absolute;
+	top: 0;
+	margin: 0;
     width: 393px;
 	height: 735px;
     user-drag: none;
     user-select: none;
 	overflow:hidden;
     /*cursor:none;*/
-	margin: 0;
 	
-}
-
-
-div:focus, div:active, span:focus, span:active, img:focus, img:active {
-    outline: none;
-    -webkit-tap-highlight-color:  rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -webkit-user-select: none;
 }
 
 #video_bg {
-	
 	width: 393px;
 	height: 735px;
 }
@@ -30,6 +29,7 @@ div:focus, div:active, span:focus, span:active, img:focus, img:active {
     position:fixed;
     top:0;
     bottom: 0;
+	margin: 0;
     width:100%;
     background:black;
     opacity:0.7;
@@ -41,9 +41,26 @@ div:focus, div:active, span:focus, span:active, img:focus, img:active {
     top:0;
     bottom: 0;
     width:393px;
-	display: block;
- 	margin-left: 20px;
+ 	margin: auto;
+	text-align: center;
 	margin-top: 50px;
+	z-index:21;
+}
+
+#fifo_title {
+	position: relative;
+	color: orange;
+	font-family: Arial;
+	font-size: 75px;
+	z-index:21;
+}
+
+#fifo {
+	position: relative;
+	color: orange;
+	font-family: dk;
+	font-weight: 100;
+	font-size: 125px;
 	z-index:21;
 }
 
