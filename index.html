@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" id="main">
+<head>
+    <meta charset="UTF-8">
+    <title>Automatic Coffee Pod Dsipenser</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body  ng-app="myApp" ng-controller="myCtrl" ng-init="init()" ng-keypress="keypress($event)" background="{{bg_image}}">
+    <!--<div class="btn" ng-click="req()"><span ng-show="req1">Hello</span></div>-->
+    <div id="pods" ng-show="bg_image=='pod.jpg'" dir="rtl">
+        <div id="cancel_btn" ng-click="cancel()"><img src="cancel.png" width="40px" onmousedown="return false" /></div>
+        <div id="credit">{{credit}} ₪</div>
+        <div class="pod_btn" ng-repeat="pod in config.pods"><pod item="pod" ng-mousedown="req(pod.id)"></pod></div>
+    </div>
+    <div id="insert_mode" ng-show="bg_image==''">
+        {{id}}
+    </div>
+
+</body>
+</html>
