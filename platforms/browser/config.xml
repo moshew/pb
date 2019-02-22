@@ -5,8 +5,6 @@
     <author email="support@phonegap.com" href="http://phonegap.com">PhoneGap Team</author>
     <content src="index.html" />
     <gap:plugin name="onesignal-cordova-plugin" source="npm" spec="2.4.5" />
-    <icon src="res/icon.png" />
-    <splash src="res/splash.png" />
     <access origin="*" />
     <preference name="Fullscreen" value="true" />
     <preference name="permissions" value="none" />

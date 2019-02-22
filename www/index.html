@@ -15,7 +15,7 @@
 	<div ng-click="click()">
 		<!--<img id="video_bg" src="http://192.168.31.116:8080/video">-->
 		<!--<img id="video_bg" src="photo.jpg">-->
-		<video id="video_bg" width="320" height="240" controls></video>
+		<video id="video_bg" autoplay playsinline></video>
 		<div class="photo_bg" ng-show="!start_pb"></div>
 		<!--<div class="photor"><img height="80%" src="http://ikafe.tk/pb/run.php" /></div>-->
 		<div ng-if="!start_pb">
@@ -32,11 +32,20 @@
 		</div>
 	</div>
 	<script>
-		navigator.mediaDevices.getUserMedia({'video': {'facingMode': 'environment'}}).then(function(mediaStream) {
-			var mediaControl = document.querySelector('#video_bg');
-			mediaControl.srcObject = mediaStream;
-			mediaControl.src = URL.createObjectURL(mediaStream);
-		});
+		var constraints = {video: { facingMode: "user" }};
+		var video = document.querySelector('video');
+
+		function handleSuccess(stream) {
+			window.stream = stream; // only to make stream available to console
+			video.srcObject = stream;
+		}
+
+		function handleError(error) {
+			console.log('getUserMedia error: ', error);
+		}
+
+		navigator.mediaDevices.getUserMedia(constraints).
+			then(handleSuccess).catch(handleError);
 	</script>
 </body>
 </html>
