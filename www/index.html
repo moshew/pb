@@ -35,19 +35,17 @@
 	
 	var constraints = {audio: false,video: { facingMode: "user" }};
 	var video = document.querySelector('video');
-
-		function handleSuccess(stream) {
-			window.stream = stream; // only to make stream available to console
-			video.srcObject = stream;
+	
+	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+		var options = { mimeType : 'video/quicktime'};
+		var mediaRecorder = new MediaRecorder(mediastream, options);
+		
+		mediaRecorder.ondataavailable = function(blob) {
+			var videoTag = document.getElementById("video_bg");  // vid is the video tag
+			videoTag.src = mediaRecorder.src;
 		}
-
-		function handleError(error) {
-			console.log('getUserMedia error: ', error);
-		}
-
-		navigator.mediaDevices.getUserMedia(constraints).
-			then(handleSuccess).catch(handleError);
-
+		mediaRecorder.start();
+	});
 	</script>
 </body>
 </html>

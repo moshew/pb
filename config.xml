@@ -29,6 +29,7 @@
   <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.3.0"/>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
   <plugin name="phonegap-plugin-media-stream" source="npm" spec="~1.2.1" />
+  <plugin name="phonegap-plugin-media-recorder" source="npm" spec="~1.1.0" />
   <plugin name="cordova-plugin-hidden-statusbar-overlay" spec="https://github.com/katzer/cordova-plugin-hidden-statusbar-overlay" />
   <gap:plugin name="onesignal-cordova-plugin" spec="2.4.5" source="npm" />
   <!--
