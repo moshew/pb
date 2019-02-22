@@ -1,7 +1,7 @@
 //var domain = 'http://pod.itv-channel.org/';
-var domain = '/srv/';
+var domain = 'http://192.168.31.123/';
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngAnimate']);
 /*
 app.config(['$sceDelegateProvider', function($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
@@ -11,10 +11,11 @@ app.config(['$sceDelegateProvider', function($sceDelegateProvider) {
 }]);
 */
 
-app.controller('myCtrl', function($scope, $http, $timeout) {
+app.controller('myCtrl', function($scope, $http, $timeout, $interval) {
     var temp_id = '';
     var login_id = '';
     var pagePromise = null;
+	
     var req_mode = false;
 
     $scope.init = function () {
@@ -22,10 +23,12 @@ app.controller('myCtrl', function($scope, $http, $timeout) {
         $scope.credit = 0;
         $scope.bg_image = 'bg.jpg';
         $scope.req1 = true;
+		$scope.counter = 1;
+		/*
         $http.jsonp(domain + 'config.php')
             .then(function (result) {
-                $scope.config = result.data;
-            });
+                $scope.config = result
+				*/
 		$scope.x1 = window.innerWidth;
 		$scope.y1 = window.innerHeight;
     };
@@ -65,9 +68,37 @@ app.controller('myCtrl', function($scope, $http, $timeout) {
         }
     };
 
+	var stop;
+	var photos_num;
 	$scope.click = function () {
 		$scope.start_pb = !$scope.start_pb;
-	};
+		$interval.cancel(stop);
+		if ($scope.start_pb) {
+			photos_num = 0;
+			$scope.counter = 0;
+			$scope.show_photobg = false;
+			$scope.show_photor = false;
+			stop = $interval(function() {
+				//if ($scope.counter==4) $interval.cancel(stop);
+				$scope.counter++;
+				if ($scope.counter==4) {
+					$http.jsonp(domain+"save.php?id="+photos_num)
+					$scope.show_photo = true;
+					$timeout(function() { $scope.show_photo = false; }, 120);
+					photos_num++;
+					if (photos_num<4) $scope.counter = 0;
+					else {
+						$interval.cancel(stop);
+						$scope.imageURL = domain+"run.php?_ts=" + new Date().getTime();
+						$timeout(function() { 
+							$scope.imageURL = domain+"run.php?_ts=" + new Date().getTime(); }, 750);
+						$timeout(function() { $scope.show_photobg = true; }, 400);
+						$timeout(function() { $scope.show_photor = true; }, 1500);
+					}
+				};
+			}, 1200);
+		}
+    };
 	
     $scope.cancel = function () {
         $timeout.cancel(pagePromise);
@@ -76,20 +107,6 @@ app.controller('myCtrl', function($scope, $http, $timeout) {
         $scope.bg_image = 'bg.jpg';
         $scope.credit = "0.00";
     };
+	
 
-    $scope.req = function(id) {
-        if (login_id != '' && !req_mode) {
-            req_mode = true;
-            $http.jsonp(domain + 'request.pod.php?tag=' + login_id + '&id=' + id)
-                .then(function (result) {
-                    if ($scope.credit != result.data.credit) {
-                        $scope.credit = result.data.credit;
-                        $http.jsonp('request.php')
-                            .then(function (result) {
-                                $scope.cancel();
-                            });
-                    } else req_mode = false;
-                });
-        }
-    };
 });

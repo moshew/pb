@@ -1,0 +1,35 @@
+{
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-splashscreen@~3.2.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-inappbrowser@~1.3.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@~1.2.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-hidden-statusbar-overlay": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/katzer/cordova-plugin-hidden-statusbar-overlay",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

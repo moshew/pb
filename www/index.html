@@ -5,19 +5,38 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Photo Booth</title>
 	
-    <script src="angular.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body  ng-app="myApp" ng-controller="myCtrl" ng-init="init()" ng-keypress="keypress($event)">
     <!--<div class="btn" ng-click="req()"><span ng-show="req1">Hello</span></div>-->
 	<div ng-click="click()">
-		<img id="video_bg" src="http://192.168.31.117:8080/video">
+		<!--<img id="video_bg" src="http://192.168.31.116:8080/video">-->
+		<!--<img id="video_bg" src="photo.jpg">-->
+		<video id="video_bg"></video>
 		<div class="photo_bg" ng-show="!start_pb"></div>
-		<div id="logo1" ng-show="!start_pb">
-			<img src="assets/logo.png" >
-			<div id="fifo">218</div>
+		<!--<div class="photor"><img height="80%" src="http://ikafe.tk/pb/run.php" /></div>-->
+		<div ng-if="!start_pb">
+			<div id="logo1"><img width="60%" src="assets/logo.png" /></div>
+			<div id="start"><img src="assets/start.png" /></div>
+		</div>
+		<div ng-if="start_pb">
+			<div class="counter" ng-show="counter==1">1</div>
+			<div class="counter" ng-show="counter==2">2</div>
+			<div class="counter" ng-show="counter==3">3</div>
+			<div class="photo" ng-show="show_photo"></div>
+			<div class="photo-bg" ng-show="show_photobg"><img src="assets/photo_bg.png" /></div>
+			<div class="photor" ng-show="show_photor"><img height="85%" ng-src="{{ imageURL }}" /></div>
 		</div>
 	</div>
+	<script>
+		navigator.mediaDevices.getUserMedia({'video': {'facingMode': 'environment'}}).then(function(mediaStream) {
+			var mediaControl = document.querySelector('video');
+			mediaControl.srcObject = mediaStream;
+			mediaControl.src = URL.createObjectURL(mediaStream);
+		});
+	</script>
 </body>
 </html>

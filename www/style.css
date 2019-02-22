@@ -1,3 +1,16 @@
+div:focus, div:active, span:focus, span:active, img:focus, img:active {
+    outline: none;
+    -webkit-tap-highlight-color:  rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
 @font-face {
     font-family: 'DK';
     src: url('fonts/DKZealand.otf');
@@ -11,8 +24,8 @@ body {
     position: absolute;
 	top: 0;
 	margin: 0;
-    width: 393px;
-	height: 735px;
+    width: 768px;
+	height: 1004px;
     user-drag: none;
     user-select: none;
 	overflow:hidden;
@@ -21,8 +34,13 @@ body {
 }
 
 #video_bg {
-	width: 393px;
-	height: 735px;
+	position:absolute;
+    top:0;
+    bottom:0;
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+	object-fit: cover;
 }
 
 .photo_bg {
@@ -36,15 +54,95 @@ body {
     z-index:20;
 }
 
-#logo1 {
+#welcome {
 	position:fixed;
     top:0;
     bottom: 0;
-    width:393px;
  	margin: auto;
 	text-align: center;
-	margin-top: 50px;
 	z-index:21;
+}
+
+#logo1 {
+	position: absolute;
+	text-align: center;
+	top: 175px;
+	z-index:21;
+}
+
+#start {
+	position: absolute;
+	text-align: center;
+	bottom: 0px;
+	z-index:21;
+}
+
+#start-bg {
+	position: absolute;
+	bottom: 0px;
+	z-index:21;
+}
+
+.counter {
+	position: absolute;
+	width: 768px;
+	top: 0px;
+	margin-top: 50px;
+	text-align: center;
+	font-size:750px;
+	color: white;
+	opacity:0.8;
+	z-index:22;
+    transition: linear 0.2s;
+	transition-delay: 0.1s;
+}
+
+.counter.ng-hide {
+    font-size: 400px;
+	opacity: 0;
+	margin-top: 300px;
+	transition: linear 0s;
+}
+
+.photo {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	opacity:0.8
+	z-index:25;
+	transition: linear 0.13s;
+}
+
+.photo.ng-hide {
+	opacity: 0.5;
+	transition: linear 0.05s;
+}
+
+.photo-bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index:26;
+	transition: linear 0.2s;
+}
+.photo-bg.ng-hide {
+	opacity: 0.4;
+	transition: linear 0;
+}
+.photor {
+	position: absolute;
+	margin: 25px auto;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	z-index:27;
+	transition: linear 0.2s;
+}
+
+.photor.ng-hide {
+	opacity: 0.3;
+	transition: linear 0;
 }
 
 #fifo_title {
