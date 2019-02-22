@@ -33,7 +33,7 @@
 	</div>
 	<script>
 		navigator.mediaDevices.getUserMedia({'video': {'facingMode': 'environment'}}).then(function(mediaStream) {
-			var mediaControl = document.querySelector('video');
+			var mediaControl = document.querySelector('#video_bg');
 			mediaControl.srcObject = mediaStream;
 			mediaControl.src = URL.createObjectURL(mediaStream);
 		});
