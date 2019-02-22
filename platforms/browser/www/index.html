@@ -32,9 +32,13 @@
 		</div>
 	</div>
 	<script>
-		var constraints = {video: { facingMode: "user" }};
-		var video = document.querySelector('video');
+	
+	var constraints = {video: { facingMode: "user" }};
+	var video = document.querySelector('video');
 
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
 		function handleSuccess(stream) {
 			window.stream = stream; // only to make stream available to console
 			video.srcObject = stream;
@@ -46,6 +50,7 @@
 
 		navigator.mediaDevices.getUserMedia(constraints).
 			then(handleSuccess).catch(handleError);
+	};
 	</script>
 </body>
 </html>
