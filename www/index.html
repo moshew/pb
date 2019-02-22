@@ -38,7 +38,7 @@
 	
 	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
 		var options = { mimeType : 'video/quicktime'};
-		var mediaRecorder = new MediaRecorder(mediastream, options);
+		var mediaRecorder = new MediaRecorder(stream, options);
 		
 		mediaRecorder.ondataavailable = function(blob) {
 			var videoTag = document.getElementById("video_bg");  // vid is the video tag
