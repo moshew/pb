@@ -43,14 +43,9 @@
 
 function onDeviceReady() {
 	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-		var options = { mimeType : 'video/quicktime'};
-		var mediaRecorder = new MediaRecorder(stream, options);
-		
-		mediaRecorder.ondataavailable = function(blob) {
-			var videoTag = document.getElementById("video_bg");  // vid is the video tag
-			videoTag.src = mediaRecorder.src;
-		}
-		mediaRecorder.requestData();
+		var mediaControl = document.getElementById("video_bg");
+		mediaControl.srcObject = stream;
+		mediaControl.src = URL.createObjectURL(stream);
 	});
 }
 	</script>
